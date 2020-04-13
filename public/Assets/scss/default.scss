@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Basis Grotesque Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Basis Grotesque Pro'), url('BasisGrotesquePro-Regular.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Basis Grotesque Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Basis Grotesque Pro Bold'), url('BasisGrotesquePro-Bold.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Basis Grotesque Pro Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Basis Grotesque Pro Light'), url('BasisGrotesquePro-Light.woff') format('woff');
+    }
+
+body{
+    background-image: url("./5Y1A0556.jpg");
+    background-size: cover;
+
+    #aboutContainer{
+        /*background-color: rgba(199,111,22, 0.75)*/
+    }
+    #siteNav{
+        background-color: transparent;
+        font-family: "Basis Grotesque Pro Bold";
+        color: white!important;
+        
+       
+    }
+    .Button{
+        border-style: solid; 
+        border-color: white;
+    }
+}
+
+.navbar-brand{
+    color: white!important;
+}
+.nav-link{
+    color: white!important;
+    text-decoration: none!important;
+}
+a{
+    color: white!important;
+    text-decoration: none!important;
+}
+
+.container-xl {
+    margin: 15px 15px 15px 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 75%!important;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+}
+
+.container{
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+}
+/*.col{
+    margin: 15px 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+}*/
+
+/*.row{
+    margin: 15px 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+}*/
