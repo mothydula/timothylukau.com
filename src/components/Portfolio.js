@@ -13,7 +13,8 @@ const Portfolio = () => {
     const[showTemi, setShowTemi] = useState(false)
     const[showMothball, setShowMothball] = useState(false)
     const[showMelanin, setShowMelanin] = useState(false)
-
+    const portfolioRef = useRef()
+    const [currRef, setCurrRef] = useState(portfolioRef)
     const [hovered, setHovered] = useState(false);
     
     const scrollToRef = (ref) => {ref.current.scrollIntoView({behavior: 'smooth'})}
@@ -37,29 +38,33 @@ const Portfolio = () => {
         melaninRef.current.style.display = "none"
     }
 
+    useEffect(() => {
+        scrollToRef(currRef)
+    }, [currRef])
+
     return (
         <Col>
             
-                <Container data-aos="fade-in" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
+                <Container ref={portfolioRef} data-aos="fade-right" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
                     <Row style={{}}>
                         <Col><h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Portfolio</h1></Col>
                         <Col style={{padding: "15 15 15 15"}}>
                             <Button
-                                onClick={()=>{hide(); setShowTemi((oldVal)=>!oldVal); setShowMothball(false); setShowMelanin(false); scrollToRef(temiRef);}}
+                                onClick={()=>{hide(); setShowTemi((oldVal)=>!oldVal); setShowMothball(false); setShowMelanin(false); setCurrRef((oldRef)=>(oldRef===temiRef)?(portfolioRef):(temiRef));}}
                                 size="large"
                                 style={{ fontFamily: "Basis Grotesque Pro Bold", fontSize: 20, color: "white", textTransform: "capitalize", marginTop: 20, marginBottom: 20, border: "2px solid white", display: "block" }}
                             >
                                 Temi
                             </Button>
                             <Button
-                                onClick={()=>{hide(); setShowMothball((oldVal)=>!oldVal); setShowTemi(false); setShowMelanin(false); scrollToRef(mothballRef);}}
+                                onClick={()=>{hide(); setShowMothball((oldVal)=>!oldVal); setShowTemi(false); setShowMelanin(false); setCurrRef((oldRef)=>(oldRef===mothballRef)?(portfolioRef):(mothballRef));}}
                                 size="large"
                                 style={{ fontFamily: "Basis Grotesque Pro Bold", fontSize: 20, color: "white", textTransform: "capitalize", marginBottom: 20, border: "2px solid white", display: "block" }}
                             >
                                 Mothball, LLC
                             </Button>
                             <Button
-                                onClick={()=>{hide(); setShowMelanin((oldVal)=>!oldVal); setShowMothball(false); setShowTemi(false); scrollToRef(melaninRef);}}
+                                onClick={()=>{hide(); setShowMelanin((oldVal)=>!oldVal); setShowMothball(false); setShowTemi(false); setCurrRef((oldRef)=>(oldRef===melaninRef)?(portfolioRef):(melaninRef));}}
                                 size="large"
                                 style={{ fontFamily: "Basis Grotesque Pro Bold", fontSize: 20, color: "white", textTransform: "capitalize", marginBottom: 20, border: "2px solid white", display: "block" }}
                             >
@@ -70,25 +75,25 @@ const Portfolio = () => {
 
                 </Container>
            
-            <Container data-aos="fade-in" ref={temiRef} id="temi-container" data-aos="zoom-in" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showTemi?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
-                <Row style={{ padding: 15 }}><h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Temi</h1></Row>
+            <Container data-aos="fade-left" ref={temiRef} id="temi-container" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showTemi?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
+                <h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Temi</h1>
                 <Row>
-                    <Col style={{ marginBottom: 20 }}>
-                        <ReactPlayer url="https://www.youtube.com/watch?v=6eW7SWHq69c" width="100" style={{ borderStyle: "solid", borderColor: "white", display: "inline-block" }} />
-                    </Col>
                     <Col>
                         <p style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", }}>Temi is a personal robot that I was tasked with developing applications for at the behest of The College of Africana Studies at the University of Arizona. I did this work as a Software developer for Tech Core. My work spanned about 5 months.</p>
                         <p style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", }}>Stack:</p>
-                        <ul style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", }}>
+                        <p style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", }}><ul>
                             <li>Android Studio/Java</li>
                             <li>SQL Server</li>
                             <li>C#/ASP.NET/Javascript (For Web Client)</li>
-                        </ul>
+                        </ul></p>
+                        <p style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", }}>Learn more&nbsp;<Button href="https://www.youtube.com/watch?v=6eW7SWHq69c" style={{ color: "white", fontSize: 20, fontFamily: "Basis Grotesque Pro Bold", textTransform: "lowercase", marginTop: 20, marginBottom: 20, border: "2px solid white"}}>here</Button></p>
                     </Col>
                 </Row>
+                    
+               
 
             </Container>
-            <Container data-aos="fade-in" ref={mothballRef} id="mothball-container" data-aos="zoom-in" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showMothball?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
+            <Container data-aos="fade-right" ref={mothballRef} id="mothball-container" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showMothball?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
                 <Row style={{ padding: 15 }}><h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Mothball, LLC</h1></Row>
                 <Row>
                     <Col>
@@ -98,7 +103,7 @@ const Portfolio = () => {
                 </Row>
 
             </Container>
-            <Container data-aos="fade-in" ref={melaninRef} id="melanin-container" data-aos="zoom-in"  style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showMelanin?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
+            <Container data-aos="fade-left" ref={melaninRef} id="melanin-container" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white", display: (showMelanin?"block":"none"), marginBottom: 20}} id="portfolioContainer" onMouseEnter={hoverPulseEvent}>
                 <Row style={{ padding: 15 }}><h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Sounds of Melanin</h1></Row>
                 <Row>
                     <Col>

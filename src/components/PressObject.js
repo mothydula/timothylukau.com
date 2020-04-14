@@ -6,9 +6,10 @@ const PressObject = (props) => {
     const link = props.link
     const publication = props.publication
     const pic = props.pic
+    const animation = props.animation
 
     return (
-        <Container data-aos="fade-in" data-aos="zoom-in" style={{ marginTop: 20, borderStyle: "solid", borderColor: "white" }}>
+        <Container data-aos={animation} style={{ marginTop: 20, borderStyle: "solid", borderColor: "white" }}>
             <Row style={{marginLeft: 0, marginRight: 0}}>
                 <Col>
                     <h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>{publication}</h1>

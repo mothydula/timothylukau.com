@@ -8,8 +8,8 @@ const Press = ()=>{
         <div style={{marginBottom: 20}}>
         <Container><h1 style={{ fontFamily: "Basis Grotesque Pro Bold", color: "white" }}>Press</h1></Container>
         <Col>
-        {pressInfo.map((props)=>
-            <PressObject publication={props.publication} title={props.title} link={props.link} pic={props.pic}/>
+        {pressInfo.map((props, index)=>
+            <PressObject animation={(index%2===0)?("fade-right"):("fade-left")} publication={props.publication} title={props.title} link={props.link} pic={props.pic}/>
         )}
        </Col>
         </div>
